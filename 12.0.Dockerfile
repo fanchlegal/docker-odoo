@@ -42,7 +42,7 @@ RUN apt-get -qq update \
         vim \
         zlibc \
         sudo \
-    && echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' >> /etc/apt/sources.list.d/postgresql.list \
+    && echo 'deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main' >> /etc/apt/sources.list.d/postgresql.list \
     && curl -SL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
     && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
     && apt-get update \
@@ -88,7 +88,7 @@ RUN build_deps=" \
     && apt-get install -yqq --no-install-recommends $build_deps \
     && pip install --no-cache-dir -r https://raw.githubusercontent.com/$ODOO_SOURCE/$ODOO_VERSION/requirements.txt \
     && pip install --no-cache-dir \
-        git+git://github.com/OCA/openupgradelib.git \
+        git+https://github.com/OCA/openupgradelib.git \
         git-aggregator \
         click-odoo-contrib \
         phonenumbers \
